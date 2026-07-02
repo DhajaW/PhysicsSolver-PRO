@@ -26,8 +26,11 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning // <-- Menna meka add karanna
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body suppressHydrationWarning> 
+        {children}
+      </body>
     </html>
   );
 }
