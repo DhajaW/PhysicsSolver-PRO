@@ -21,8 +21,8 @@ export async function POST(req: NextRequest) {
     const buffer = Buffer.from(arrayBuffer);
     const base64Image = buffer.toString('base64');
 
-    // Gemini 1.5 Pro model eka thoragannawa (meka image walata supiri)
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });  
+    // Gemini 2.0 Flash model (image analysis + speed is top-notch)
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
     // AI ekata dena command (prompt) eka
     const prompt = `You are an expert Sri Lankan Physics Examiner. Solve the physics problem in this image. 
@@ -49,6 +49,6 @@ export async function POST(req: NextRequest) {
 
   } catch (error: any) {
     console.error("AI Error:", error);
-    return NextResponse.json({ error: `Wisanduma gannakota podi awulak una: ${error?.message || error || 'Unknown error'}` }, { status: 500 });
+    return NextResponse.json({ error: 'විසඳුම ලබා ගැනීමේදී ගැටලුවක් මතු විය. කරුණාකර API key එක හෝ අන්තර්ජාලය පරීක්ෂා කරන්න.' }, { status: 500 });
   }
 }
