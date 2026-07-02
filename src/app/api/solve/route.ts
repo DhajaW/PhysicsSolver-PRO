@@ -1,13 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-// API Key eken Gemini AI eka initialize karanawa
-const apiKey = process.env.GEMINI_API_KEY;
-if (!apiKey) throw new Error('GEMINI_API_KEY environment variable is not set');
-const genAI = new GoogleGenerativeAI(apiKey);
-
 export async function POST(req: NextRequest) {
   try {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json({ error: 'GEMINI_API_KEY environment variable is not set' }, { status: 500 });
+    }
+    const genAI = new GoogleGenerativeAI(apiKey);
+
     // Frontend eken ewana image eka gannawa
     const formData = await req.formData();
     const image = formData.get('image') as File;
