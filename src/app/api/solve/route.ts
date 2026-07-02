@@ -21,7 +21,8 @@ export async function POST(req: NextRequest) {
     const buffer = Buffer.from(arrayBuffer);
     const base64Image = buffer.toString('base64');
 
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    // Gemini 1.5 Pro model eka thoragannawa (meka image walata supiri)
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });  
 
     // AI ekata dena command (prompt) eka
     const prompt = `You are an expert Sri Lankan Physics Examiner. Solve the physics problem in this image. 
@@ -46,8 +47,8 @@ export async function POST(req: NextRequest) {
     // Uththare frontend ekata yawanawa
     return NextResponse.json({ solution: text });
 
-  } catch (error) {
+  } catch (error: any) {
     console.error("AI Error:", error);
-    return NextResponse.json({ error: 'Wisanduma gannakota podi awulak una.' }, { status: 500 });
+    return NextResponse.json({ error: `Wisanduma gannakota podi awulak una: ${error?.message || error || 'Unknown error'}` }, { status: 500 });
   }
 }
