@@ -52,3 +52,134 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(99, 102, 241, 0.7);
 }
+
+/* ==========================================================================
+   Premium UI/UX Animations and Scroll-Snap Utilities
+   ========================================================================== */
+
+/* Bohr atom loading animation */
+.atom-loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 160px;
+  position: relative;
+  perspective: 300px;
+}
+
+.atom-nucleus {
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle, #38bdf8 0%, #0284c7 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 15px #0284c7, 0 0 30px #38bdf8;
+  z-index: 10;
+  animation: pulse-nucleus 1.5s ease-in-out infinite alternate;
+}
+
+.atom-orbit-1, .atom-orbit-2, .atom-orbit-3 {
+  border: 1px dashed rgba(56, 189, 248, 0.25);
+  border-radius: 50%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.atom-orbit-1 {
+  width: 70px;
+  height: 70px;
+  transform: rotateX(70deg) rotateY(15deg);
+}
+.atom-orbit-2 {
+  width: 105px;
+  height: 105px;
+  transform: rotateX(60deg) rotateY(-30deg);
+}
+.atom-orbit-3 {
+  width: 140px;
+  height: 140px;
+  transform: rotateX(50deg) rotateY(45deg);
+}
+
+.atom-electron {
+  width: 8px;
+  height: 8px;
+  background-color: #38bdf8;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 0 10px #38bdf8, 0 0 20px #06b6d4;
+}
+
+.atom-orbit-1 .atom-electron {
+  animation: orbit1 2s linear infinite;
+}
+.atom-orbit-2 .atom-electron {
+  animation: orbit2 2.5s linear infinite;
+}
+.atom-orbit-3 .atom-electron {
+  animation: orbit3 3s linear infinite;
+}
+
+@keyframes pulse-nucleus {
+  0% { transform: scale(0.9); box-shadow: 0 0 12px #0284c7, 0 0 24px #38bdf8; }
+  100% { transform: scale(1.1); box-shadow: 0 0 20px #0284c7, 0 0 40px #06b6d4; }
+}
+
+@keyframes orbit1 {
+  0% { transform: rotate(0deg) translate(35px) rotate(0deg); }
+  100% { transform: rotate(360deg) translate(35px) rotate(-360deg); }
+}
+@keyframes orbit2 {
+  0% { transform: rotate(120deg) translate(52px) rotate(-120deg); }
+  100% { transform: rotate(480deg) translate(52px) rotate(-480deg); }
+}
+@keyframes orbit3 {
+  0% { transform: rotate(240deg) translate(70px) rotate(-240deg); }
+  100% { transform: rotate(600deg) translate(70px) rotate(-600deg); }
+}
+
+/* Scroll snap classes */
+.scroll-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  height: 100vh;
+  scroll-behavior: smooth;
+}
+.scroll-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Premium micro-animations & glows */
+.glow-card {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.glow-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.35) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.text-shimmer-neon {
+  background: linear-gradient(to right, #60a5fa 10%, #e0f2fe 30%, #818cf8 50%, #22d3ee 70%, #60a5fa 90%);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shine-gradient 5s linear infinite;
+}
+
+@keyframes shine-gradient {
+  to {
+    background-position: 200% center;
+  }
+}
+
