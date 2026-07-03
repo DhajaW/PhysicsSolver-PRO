@@ -28,9 +28,12 @@ export async function POST(req: NextRequest) {
     // AI ekata dena command (prompt) eka
     const prompt = `You are an expert Sri Lankan Physics Examiner. Solve the physics problem in this image. 
     Provide the answer in a step-by-step format strictly following standard marking schemes. 
+    Write the entire response (explanations and description) in Sinhala (සිංහල). 
+    Use standard Sri Lankan Sinhala-medium G.C.E. A/L Physics terminology.
+    Keep all mathematical equations, formulas, substitutions, and units in standard English/LaTeX notation. 
     Show equations, substitutions, and final answers with units clearly. 
     Use standard Markdown and LaTeX for equations where necessary.
-    If the image is not a physics problem, politely mention that you can only solve physics problems.`;
+    If the image is not a physics problem, politely mention in Sinhala that you can only solve physics problems.`;
 
     // AI ekata data yawala uththare enakam inna
     const result = await model.generateContent([
