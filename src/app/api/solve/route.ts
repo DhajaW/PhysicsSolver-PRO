@@ -22,8 +22,8 @@ export async function POST(req: NextRequest) {
     const buffer = Buffer.from(arrayBuffer);
     const base64Image = buffer.toString('base64');
 
-    // Gemini 2.0 Flash model (image analysis + speed is top-notch)
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    // Gemini 2.5 Flash model (image analysis + speed is top-notch)
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
     // AI ekata dena command (prompt) eka
     const prompt = `You are an expert Sri Lankan Physics Examiner. Solve the physics problem in this image. 
